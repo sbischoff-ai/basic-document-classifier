@@ -2,7 +2,8 @@
 A simple CNN for n-class classification of document images.
 
 It doesn't take colour into account (it transforms to grayscale).
-For small numbers of classes (2 to 4) this model can achieve > 90% accuracy with as little as 10 to 30 images per class.
+For small numbers of classes (2 to 4) this model can achieve > 90% accuracy with as little as 10 to 30 training images per class.
+Training data can be provided in [any image format supported by *PIL*](https://pillow.readthedocs.io/en/5.1.x/handbook/image-file-formats.html).
 
 ## Installation
 
