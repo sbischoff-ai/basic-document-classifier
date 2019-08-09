@@ -1,17 +1,30 @@
 [tool.poetry]
 name = "document-classifier"
 version = "0.1.0"
-description = ""
-authors = ["Bischoff, Silas <SBischoff@brockhaus-ag.de>"]
+description = "A simple CNN for n-class classification of document images."
+authors = ["Silas Bischoff <silas.bischoff@googlemail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/sbischoff-ai/basic-document-classifier"
+keywords = ["document", "image", "classification", "deep", "learning"]
+classifiers = [
+    "Intended Audience :: Legal Industry",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Image Recognition",
+    "Development Status :: 4 - Beta"
+]
+packages = [{ include = "document_classifier" }]
 
 [tool.poetry.dependencies]
 python = "^3.6"
 keras = "^2.2"
 pillow = "^6.1"
 tensorflow-gpu = "^1.14"
-flask = "^1.1"
-flask_cors = "^3.0"
-flask_yoloapi = "^0.1.6"
 numpy = "^1.17"
 
 [tool.poetry.dev-dependencies]
