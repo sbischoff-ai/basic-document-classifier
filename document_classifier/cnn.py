@@ -12,12 +12,15 @@ from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Activation, Dropout, Flatten, Dense
 from keras.optimizers import SGD
 from keras.initializers import Constant
+from keras.backend import clear_session
 from keras.preprocessing.image import ImageDataGenerator, load_img, img_to_array
 
 class CNN:
     """
     Predict document classes based on images and train the underlying model with training data.
     """
+
+    _last_used_instance = None
 
     input_size: tuple = (384, 384) # document aspect ratio is warped
 
@@ -67,6 +70,8 @@ class CNN:
 
         self.model = model
         # compile model
+        if CNN._last_used_instance is not None:
+            clear_session()
         self.model.compile(
             loss='binary_crossentropy' if self.is_binary else 'categorical_crossentropy',
             optimizer=SGD(lr=0.01, decay=1e-6), 
@@ -130,6 +135,8 @@ class CNN:
 
     def predict(self, image) -> tuple:
         """Return the predicted class and confidence score for a given document image."""
+        if CNN._last_used_instance is not None and CNN._last_used_instance != self:
+            clear_session()
         if type(image) == bytes: # allow to pass binary image file content
             img = Image.open(BytesIO(image))
             img = img.convert("L").resize(self.input_size) # convert("L") -> grayscale
@@ -138,6 +145,7 @@ class CNN:
         data = img_to_array(img)/255 # normalize pixel intensity -> [0,1]
         data = data.reshape((1,) + data.shape)
         prediction = self.model.predict(data)
+        CNN._last_used_instance = self
         # generate and return the (class, confidence) tuple
         if self.is_binary:
             if prediction[0][0] <= 0.5:

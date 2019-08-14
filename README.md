@@ -45,6 +45,11 @@ prediction = classifier.predict(image="./my_image.jpg")
 
 The prediction result is a 2-tuple containing the document class label as a string and the confidence score as a float.
 
+## Changes
+
+### 0.1.1
+- Fix a bug that occurs when using multiple model instances at the same time
+
 ## TODO
 
 The model architecture is fixed for now and geared towards smaller numbers of classes and training images.
