@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "document-classifier"
-version = "0.1.1"
+version = "0.1.2"
 description = "A simple CNN for n-class classification of document images."
 authors = ["Silas Bischoff <silas.bischoff@googlemail.com>"]
 license = "MIT"

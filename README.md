@@ -47,8 +47,11 @@ The prediction result is a 2-tuple containing the document class label as a stri
 
 ## Changes
 
+### 0.1.2
+- Give every CNN instance its own isolated tensorflow graph and session
+
 ### 0.1.1
-- Fix a bug that occurs when using multiple model instances at the same time
+- Fix a bug that occured when using multiple model instances at the same time
 
 ## TODO
 
